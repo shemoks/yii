@@ -89,3 +89,13 @@ a.desc:after {
     padding: 10px 20px;
     margin: 0 0 15px 0;
 }
+
+.my-form .form-group {
+    padding: 0 5px;
+}
+
+.image img {
+
+    width: 300px;
+    height: 300px;
+}
