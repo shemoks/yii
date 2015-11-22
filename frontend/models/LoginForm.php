@@ -99,14 +99,14 @@ class LoginForm extends Model
     public function validatorSex($attribute)
     {
         if (!in_array($this->$attribute, ['man', 'women'])) {
-            $this->addError($attribute, 'sex: man or women.');
+            $this->addError($attribute, 'пол: м или Ж.');
         }
     }
 
     public function validatorEducation($attribute)
     {
         if (!in_array($this->$attribute, ['base', 'middle', 'higher', 'unfinished higher'])) {
-            $this->addError($attribute, 'education: base or middle or higher or unfinished higher.');
+            $this->addError($attribute, 'образование: базовое, среднее, незаконченное высшее, высшее.');
         }
     }
 
@@ -117,13 +117,13 @@ class LoginForm extends Model
     {
         $pattern = '/^[A-Za-zА-Яа-яїЇйЙіІъЪёЁs,]+$/u';
         if (mb_strlen($this->$attribute, 'utf-8') < self::min) {
-            $this->addError($attribute, 'data must contain more ' . self::min . ' letters');
+            $this->addError($attribute, 'данные должны содержать не менее ' . self::min . ' букв');
         } elseif ((mb_strlen($this->$attribute, 'utf-8') > self::max)) {
-            $this->addError($attribute, 'data must contain more ' . self::max . ' letters');
+            $this->addError($attribute, 'данные должны содержать не более ' . self::max . ' букв');
 
         }
         if (!preg_match($pattern, $this->$attribute)) {
-            $this->addError($attribute, 'data must contain only russian or english letters');
+            $this->addError($attribute, 'данные должны включать буквы латинского, русского или украинского алфавита');
         }
     }
 
@@ -132,7 +132,7 @@ class LoginForm extends Model
         $pattern = '/[0-9]{4}-(0[1-9]|1[012])-(0[1-9]|1[0-9]|2[0-9]|30|31)/';
         /** @var string $pattern */
         if (!preg_match($pattern, $this->$attribute)) {
-            $this->addError($attribute, 'format: yyyy-mm-dd');
+            $this->addError($attribute, 'формат: yyyy-mm-dd');
         }
 
     }
@@ -142,7 +142,7 @@ class LoginForm extends Model
         $pattern = '/^\(0[0-9]{2}\)[0-9]{3}-[0-9]{2}-[0-9]{2}$/';
         /** @var string $pattern */
         if (!preg_match($pattern, $this->$attribute)) {
-            $this->addError($attribute, 'format: (067)898-78-67');
+            $this->addError($attribute, 'формат: (067)898-78-67');
         }
 
     }
