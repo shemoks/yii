@@ -1,4 +1,5 @@
 <?php
+
 use yii\widgets\ActiveForm;
 ?>
 
@@ -9,5 +10,7 @@ use yii\widgets\ActiveForm;
 <button>Отправить</button>
 
 <?php ActiveForm::end() ?>
+
+
 
 

@@ -1,58 +1,69 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: oksana
- * Date: 21.11.15
- * Time: 19:40
- */
 
-namespace frontend\models;
+namespace app\models;
 
 use Yii;
-use yii\base\Model;
-use yii\web\UploadedFile;
+use yii\db\ActiveRecord;
 
-
-class LoginForm extends Model
+/**
+ * This is the model class for table "teachers".
+ *
+ * @property integer $id
+ * @property string $userSurname
+ * @property string $userName
+ * @property string $nickName
+ * @property string $dateBorn
+ * @property string $sex
+ * @property string $education
+ * @property string $email
+ * @property string $phone
+ * @property string $imageFile
+ * @property string $password
+ * @property integer $id_department
+ *
+ * @property Departments $idDepartment
+ * @property Teaching[] $teachings
+ */
+class Teachers extends ActiveRecord
 {
     const WEAK = 0;
     const STRONG = 1;
 
     const min = 3;
     const max = 10;
-
-    public $userName;
-    public $userSurname;
-    public $nickName;
-    public $dateBorn;
-    public $sex;
-    public $education;
-    public $email;
-    public $phone;
+    public $rememberMe;
     public $passwordRepeat;
-    public $imageFile;
-    public $password;
-    public $rememberMe = false;
 
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'teachers';
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
             [
                 [
-                    'userName',
                     'userSurname',
+                    'userName',
                     'nickName',
                     'dateBorn',
                     'sex',
                     'education',
                     'email',
                     'phone',
-                    'passwordRepeat',
                     'password'
                 ],
                 'required',
                 'message' => "Поле {attribute} не может быть пустым"
             ],
+            [['id_department'], 'integer'],
             [
                 [
                     'userName',
@@ -85,13 +96,13 @@ class LoginForm extends Model
                 'compareAttribute' => 'password',
                 'message'          => 'Пароли не совпадают'
             ],
-             [
-                 ['imageFile'],
-                 'file',
-                 'extensions' => 'png, jpg',
-                 'maxSize'    => 1024 * 250,
-                 'minSize'    => 0,
-             ],
+            [
+                ['imageFile'],
+                'file',
+                'extensions' => 'png, jpg',
+                'maxSize'    => 1024 * 250,
+                'minSize'    => 0,
+            ],
             ['education', 'validatorEducation']
         ];
     }
@@ -147,24 +158,6 @@ class LoginForm extends Model
 
     }
 
-    public function attributeLabels()
-    {
-        return [
-            'userName'       => \Yii::t('app', 'Имя'),
-            'userSurname'    => \Yii::t('app', 'Фамилия'),
-            'nickName'       => \Yii::t('app', 'Логин'),
-            'dateBorn'       => \Yii::t('app', 'Дата рождения'),
-            'sex'            => \Yii::t('app', 'Пол'),
-            'education'      => \Yii::t('app', 'Образование'),
-            'email'          => \Yii::t('app', 'E-mail'),
-            'phone'          => \Yii::t('app', 'Телефон'),
-            'passwordRepeat' => \Yii::t('app', 'Повторите пароль'),
-            'imageFile'      => \Yii::t('app', 'Фото'),
-            'password'       => \Yii::t('app', 'Пароль'),
-            'rememberMe'     => \Yii::t('app', 'Запомнить меня'),
-        ];
-    }
-
     public function validatorPassword($attribute)
     {
         $pattern = '/^[a-zA-Z0-9_-]{6,20}$/';
@@ -185,5 +178,42 @@ class LoginForm extends Model
         } else {
             return false;
         }
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'userName'       => \Yii::t('app', 'Имя'),
+            'userSurname'    => \Yii::t('app', 'Фамилия'),
+            'nickName'       => \Yii::t('app', 'Логин'),
+            'dateBorn'       => \Yii::t('app', 'Дата рождения'),
+            'sex'            => \Yii::t('app', 'Пол'),
+            'education'      => \Yii::t('app', 'Образование'),
+            'email'          => \Yii::t('app', 'E-mail'),
+            'phone'          => \Yii::t('app', 'Телефон'),
+            'passwordRepeat' => \Yii::t('app', 'Повторите пароль'),
+            'imageFile'      => \Yii::t('app', 'Фото'),
+            'password'       => \Yii::t('app', 'Пароль'),
+            'rememberMe'     => \Yii::t('app', 'Запомнить меня'),
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getIdDepartment()
+    {
+        return $this->hasOne(Departments::className(), ['id' => 'id_department']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getTeachings()
+    {
+        return $this->hasMany(Teaching::className(), ['id_teacher' => 'id']);
     }
 }

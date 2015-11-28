@@ -8,6 +8,7 @@ $this->title = 'My Yii Application';
 
     <div class="jumbotron">
         <p><a class="btn btn-lg btn-success" href="http://yii.loc/index.php?r=login-form/index">Yii HomeWork#2</a></p>
+        <p><a class="btn btn-lg btn-success" href="http://yii.loc/index.php?r=tables/index">Yii HomeWork#3</a></p>
     </div>
 
 </div>
