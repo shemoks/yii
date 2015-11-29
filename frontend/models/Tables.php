@@ -22,7 +22,7 @@ class Tables extends Model
      */
     public function __construct()
     {
-        $this->name = "Зробіть вибір таблиці";
+        $this->name = "Выберите таблицу";
     }
 
     /**

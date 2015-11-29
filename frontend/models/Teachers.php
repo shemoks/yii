@@ -33,7 +33,7 @@ class Teachers extends ActiveRecord
     const STRONG = 1;
 
     const min = 3;
-    const max = 10;
+    const max = 30;
     public $rememberMe;
     public $passwordRepeat;
   //  public $image;
