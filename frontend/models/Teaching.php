@@ -41,9 +41,9 @@ class Teaching extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_subject' => Yii::t('app', 'Id Subject'),
-            'id_teacher' => Yii::t('app', 'Id Teacher'),
-            'year' => Yii::t('app', 'Year'),
+            'id_subject' => Yii::t('app', 'предмет'),
+            'id_teacher' => Yii::t('app', 'преподаватель'),
+            'year' => Yii::t('app', 'учебный год'),
         ];
     }
 
