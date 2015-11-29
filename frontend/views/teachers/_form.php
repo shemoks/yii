@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Teachers */
+/* @var $model frontend\models\Teachers */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -12,8 +12,8 @@ use yii\widgets\ActiveForm;
     <?php
     $form = ActiveForm::begin([
         'id'                   => 'teachers',
-  //    'enableClientValidation' => false,
-       'enableAjaxValidation' => true,
+        //    'enableClientValidation' => false,
+        'enableAjaxValidation' => true,
         'options'              => ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data'],
     ]) ?>
 
@@ -52,14 +52,15 @@ use yii\widgets\ActiveForm;
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'),
-            ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
     <?php if (!empty($model->imageFile)) { ?>
         <div class="image">
-            <img src="<?= $model->imageFile ?>">
+            <img src="/uploads/<?= $model->imageFile ?>">
         </div>
     <?php } ?>
+
 
 </div>

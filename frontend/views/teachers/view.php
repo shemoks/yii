@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Teachers */
+/* @var $model frontend\models\Teachers */
 
 $this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Teachers'), 'url' => ['index']];
@@ -42,6 +42,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'id_department',
         ],
     ]) ?>
-
+    <?php if (!empty($model->imageFile)) { ?>
+        <div class="image">
+            <img src="/uploads/<?= $model->imageFile ?>">
+        </div>
+    <?php } ?>
 
 </div>

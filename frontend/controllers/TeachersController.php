@@ -2,9 +2,9 @@
 
 namespace frontend\controllers;
 
+use frontend\models\ModelsTeachers;
 use Yii;
-use app\models\Teachers;
-use yii\data\ActiveDataProvider;
+use frontend\models\Teachers;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -35,11 +35,11 @@ class TeachersController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Teachers::find(),
-        ]);
+        $searchModel = new ModelsTeachers();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -80,17 +80,11 @@ class TeachersController extends Controller
 
         } else {
 
-
             return $this->render('create', [
                 'model' => $model,
             ]);
         }
     }
-
-
-
-
-
 
     /**
      * Updates an existing Teachers model.

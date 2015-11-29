@@ -1,16 +1,16 @@
 <?php
 
-namespace app;
+namespace frontend\models;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Departments;
+
 
 /**
- * models represents the model behind the search form about `app\models\Departments`.
+ * models represents the model behind the search form about `frontend\models\Departments`.
  */
-class models extends Departments
+class ModelsDepartments extends Departments
 {
     /**
      * @inheritdoc
