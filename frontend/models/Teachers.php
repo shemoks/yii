@@ -207,7 +207,7 @@ class Teachers extends ActiveRecord
             'password'       => \Yii::t('app', 'Пароль'),
             'rememberMe'     => \Yii::t('app', 'Запомнить меня'),
             'id'       => \Yii::t('app', 'Номер'),
-              'id_department'       => \Yii::t('app', 'Номер кафедри'),
+              'id_department'       => \Yii::t('app', 'Номер кафедры'),
         ];
     }
 

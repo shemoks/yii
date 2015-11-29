@@ -3,6 +3,7 @@
 namespace frontend\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "teaching".
@@ -14,7 +15,7 @@ use Yii;
  * @property Subjects $idSubject
  * @property Teachers $idTeacher
  */
-class Teaching extends \yii\db\ActiveRecord
+class Teaching extends ActiveRecord
 {
     /**
      * @inheritdoc
