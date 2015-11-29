@@ -3,7 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\web\UploadedFile;
 use yii\db\ActiveRecord;
+
 
 /**
  * This is the model class for table "teachers".
@@ -17,12 +19,13 @@ use yii\db\ActiveRecord;
  * @property string $education
  * @property string $email
  * @property string $phone
- * @property string $imageFile
  * @property string $password
  * @property integer $id_department
+ * @property string $imageFile
  *
  * @property Departments $idDepartment
  * @property Teaching[] $teachings
+ *
  */
 class Teachers extends ActiveRecord
 {
@@ -33,6 +36,7 @@ class Teachers extends ActiveRecord
     const max = 10;
     public $rememberMe;
     public $passwordRepeat;
+  //  public $image;
 
     /**
      * @inheritdoc
@@ -63,7 +67,7 @@ class Teachers extends ActiveRecord
                 'required',
                 'message' => "Поле {attribute} не может быть пустым"
             ],
-            [['id_department'], 'integer'],
+            [['id_department'], 'integer', 'message' => "число должно быть целым"],
             [
                 [
                     'userName',
@@ -103,7 +107,8 @@ class Teachers extends ActiveRecord
                 'maxSize'    => 1024 * 250,
                 'minSize'    => 0,
             ],
-            ['education', 'validatorEducation']
+            ['education', 'validatorEducation'],
+
         ];
     }
 
@@ -169,16 +174,19 @@ class Teachers extends ActiveRecord
 
     /**
      * @return bool
+     *
      */
     public function upload()
     {
         if ($this->validate()) {
             $this->imageFile->saveAs('uploads/' . $this->imageFile->baseName . '.' . $this->imageFile->extension);
+            $this->imageFile = $this->imageFile->baseName . '.' . $this->imageFile->extension;
             return true;
         } else {
             return false;
         }
     }
+
 
     /**
      * @inheritdoc
@@ -188,16 +196,18 @@ class Teachers extends ActiveRecord
         return [
             'userName'       => \Yii::t('app', 'Имя'),
             'userSurname'    => \Yii::t('app', 'Фамилия'),
-            'nickName'       => \Yii::t('app', 'Логин'),
+            'nickName'       => \Yii::t('app', 'Отчество'),
             'dateBorn'       => \Yii::t('app', 'Дата рождения'),
             'sex'            => \Yii::t('app', 'Пол'),
             'education'      => \Yii::t('app', 'Образование'),
             'email'          => \Yii::t('app', 'E-mail'),
             'phone'          => \Yii::t('app', 'Телефон'),
             'passwordRepeat' => \Yii::t('app', 'Повторите пароль'),
-            'imageFile'      => \Yii::t('app', 'Фото'),
+            'imageFile'          => \Yii::t('app', 'Фото'),
             'password'       => \Yii::t('app', 'Пароль'),
             'rememberMe'     => \Yii::t('app', 'Запомнить меня'),
+            'id'       => \Yii::t('app', 'Номер'),
+              'id_department'       => \Yii::t('app', 'Номер кафедри'),
         ];
     }
 

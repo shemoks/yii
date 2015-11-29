@@ -30,7 +30,7 @@ class Departments extends ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['title'], 'string', 'max' => 50]
+            [['title'], 'string', 'max' => 255]
         ];
     }
 
@@ -40,8 +40,8 @@ class Departments extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
+            'id' => Yii::t('app', 'Номер кафедры'),
+            'title' => Yii::t('app', 'Название кафедры'),
         ];
     }
 
