@@ -17,6 +17,8 @@ use yii\web\Response;
  */
 class TeachersController extends Controller
 {
+    public $layout = "myLayout";
+
     public function behaviors()
     {
         return [

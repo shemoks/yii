@@ -14,6 +14,7 @@ use yii\filters\VerbFilter;
  */
 class DepartmentsController extends Controller
 {
+    public $layout = "myLayout";
     public function behaviors()
     {
         return [
