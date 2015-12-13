@@ -2,5 +2,6 @@
 
 return [
     'College' => 'Колледж',
+    'Teachers' => 'Викладачі'
 
 ];
