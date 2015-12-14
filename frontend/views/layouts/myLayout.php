@@ -33,7 +33,7 @@ MyAsset::register($this);
                     [
                         'icon' => 'fa-user',
                         'link' => '/',
-                        'text' => 'home',
+                        'text' => Yii::t('app', 'Home'),
                     ],[
                         'icon' => 'fa-github',
                         'link' => 'https://github.com/shemoks',
@@ -46,27 +46,27 @@ MyAsset::register($this);
             [
                 'icon' => 'fa-home',
                 'link' => '/',
-                'text' => 'home',
+                'text' => Yii::t('app', 'Home'),
             ],
             [
                 'icon'        => 'fa-table',
-                'text'        => 'Tables',
+                'text'        => Yii::t('app', 'Tables'),
                 'subMenuData' => [
                     [
                         'link' => '/index.php?r=teachers/index',
-                        'text' => 'Teachers',
+                        'text' => Yii::t('app', 'Teachers'),
                     ],
                     [
                         'link' => '/index.php?r=departments/index',
-                        'text' => 'Departments',
+                        'text' => Yii::t('app','Departments'),
                     ],
                     [
                         'link' => '/index.php?r=subjects/index',
-                        'text' => 'Subjects',
+                        'text' => Yii::t('app','Subjects'),
                     ],
                     [
                         'link' => '/index.php?r=teaching/index',
-                        'text' => 'Teaching',
+                        'text' => Yii::t('app','Teaching'),
                     ]
                 ],
             ],

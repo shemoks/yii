@@ -12,7 +12,7 @@ class LangWidget extends Widget
     public function run() {
         return $this->render('index', [
             'current' => Languages::getCurrent(),
-            'langs' => Languages::find()->where('id != :current_id', [':current_id' => Languages::getCurrent()->id])->all(),
+            'language' => Languages::find()->where('id != :current_id', [':current_id' => Languages::getCurrent()->id])->all(),
         ]);
     }
 }

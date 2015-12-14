@@ -8,8 +8,8 @@ use yii\helpers\Html;
         $current->name;?> <span class="show-more-lang">▼</span>
     </span>
     <ul id="langs">
-        <?php /** @var  $langs */
-        foreach ($langs as $lang):?>
+        <?php /** @var  $language */
+        foreach ($language as $lang):?>
             <li class="item-lang">
                 <?= Html::a($lang->name, '/'.$lang->url.Yii::$app->getRequest()->getLangUrl()) ?>
             </li>
