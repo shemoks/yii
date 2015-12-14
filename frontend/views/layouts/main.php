@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -36,8 +37,10 @@ AppAsset::register($this);
     ]);
     $menuItems = [
         ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'About', 'url' => ['/site/about']],
+        ['label' => 'Contact', 'url' => ['/site/contact']],
     ];
-   /*if (Yii::$app->user->isGuest) {
+    if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
@@ -46,7 +49,7 @@ AppAsset::register($this);
             'url' => ['/site/logout'],
             'linkOptions' => ['data-method' => 'post']
         ];
-    }*/
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
@@ -59,7 +62,9 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+        <?= \frontend\widgets\lang\LangWidget::widget();?>
         <?= $content ?>
+
     </div>
 </div>
 
@@ -67,8 +72,9 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; My Homeworks <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+
     </div>
+
 </footer>
 
 <?php $this->endBody() ?>

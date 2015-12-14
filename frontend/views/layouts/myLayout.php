@@ -23,6 +23,7 @@ MyAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div id="wrapper">
+    <?= \frontend\widgets\lang\LangWidget::widget();?>
     <?= \frontend\widgets\menu\MenuWidget::widget([
         'siteName'     => Yii::t('app', 'College'),
         'topMenuItems' => [
@@ -75,9 +76,18 @@ MyAsset::register($this);
     <div id="page-wrapper" style="min-height: 252px;">
         <?= Alert::widget() ?>
         <?= $content ?>
+
     </div>
 </div>
+<footer class="footer">
+    <div class="container">
+        <p class="pull-left">&copy;  <?= date('Y') ?></p>
 
+        <p class="pull-right"><?= Yii::powered() ?></p>
+
+    </div>
+
+</footer>
 <?php $this->endBody() ?>
 </body>
 </html>
