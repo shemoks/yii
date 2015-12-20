@@ -32,7 +32,7 @@ class Teaching extends ActiveRecord
     {
         return [
             [['id_subject', 'id_teacher', 'year'], 'required'],
-            [['id_subject', 'id_teacher', 'year'], 'integer']
+            [['id_subject', 'id_teacher', 'year'], 'integer'],
         ];
     }
 
@@ -44,7 +44,7 @@ class Teaching extends ActiveRecord
         return [
             'id_subject' => Yii::t('app', 'предмет'),
             'id_teacher' => Yii::t('app', 'преподаватель'),
-            'year' => Yii::t('app', 'учебный год'),
+            'year'       => Yii::t('app', 'учебный год'),
         ];
     }
 

@@ -23,9 +23,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id_subject',
+            [
+                'class' => 'yii\grid\SerialColumn'
+            ], [
+                'attribute' => 'id_subject',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    return $model->idSubject->title;
+                },
+            ],
             'id_teacher',
             'year',
 

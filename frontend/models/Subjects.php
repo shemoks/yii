@@ -57,4 +57,12 @@ class Subjects extends ActiveRecord
     {
         return $this->hasMany(Teaching::className(), ['id_subject' => 'id']);
     }
+
+    /**
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public function getAllSubjects()
+    {
+        return $this->find()->asArray()->all();
+    }
 }

@@ -28,12 +28,12 @@ return [
             ],
         ],
         'request' => [
-         'class' => 'frontend\components\LangRequest'
+         'class' => 'common\components\LangRequest'
         ],
       'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
-            'class'=>'frontend\components\LangUrlManager',
+            'class'=>'common\components\LangUrlManager',
             'rules'=>[
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<lang:\w+>/<controller:\w+>/<action:\w+>' => '<controller>/<action>',
