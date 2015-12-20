@@ -1,0 +1,16 @@
+Index: frontend/views/layouts/main.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- frontend/views/layouts/main.php	(revision )
++++ frontend/views/layouts/main.php	(revision )
+@@ -56,7 +56,7 @@
+     NavBar::end();
+     ?>
+ 
+-    <div class="container">
++    <div class="container">git
+         <?= Breadcrumbs::widget([
+             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+         ]) ?>

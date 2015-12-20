@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
 
+
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -28,20 +29,19 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'My Company',
+        'brandLabel' => Yii::t('app', 'My Homeworks'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
-        ['label' => 'About', 'url' => ['/site/about']],
-        ['label' => 'Contact', 'url' => ['/site/contact']],
+        ['label' =>Yii::t('app', 'Home'), 'url' => ['/site/index']],
+        ['label' => Yii::t('app','Contact'), 'url' => ['/site/contact']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => Yii::t('app','Signup'), 'url' => ['/site/signup']];
+        $menuItems[] = ['label' => Yii::t('app','Login'), 'url' => ['/site/login']];
     } else {
         $menuItems[] = [
             'label' => 'Logout (' . Yii::$app->user->identity->username . ')',
@@ -61,16 +61,19 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
+        <?= \frontend\widgets\lang\LangWidget::widget();?>
         <?= $content ?>
+
     </div>
 </div>
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; My Company <?= date('Y') ?></p>
+        <p class="pull-left">&copy; <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+
     </div>
+
 </footer>
 
 <?php $this->endBody() ?>
