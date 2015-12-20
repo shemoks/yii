@@ -11,6 +11,7 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    'language'=>'ru-RU',
 
     'components' => [
         'user' => [
@@ -29,23 +30,22 @@ return [
         'request' => [
          'class' => 'frontend\components\LangRequest'
         ],
-     /* 'urlManager' => [
+      'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'class'=>'frontend\components\LangUrlManager',
             'rules'=>[
-                '/' => 'site/index',
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+                '<lang:\w+>/<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ]
-        ],*/
-       'language'=>'ru-RU',
+        ],
+
         'i18n' => [
             'translations' => [
-                '*' => [
+                'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                    // 'forceTranslation' => true,
                     'basePath' => '@frontend/messages',
-                    'sourceLanguage' => 'ru',
                     'fileMap' => [
                         'app' => 'app.php',
                     ],

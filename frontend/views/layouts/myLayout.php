@@ -6,6 +6,7 @@
 use frontend\assets\MyAsset;
 use yii\helpers\Html;
 use common\widgets\Alert;
+use yii\helpers\Url;
 
 MyAsset::register($this);
 ?>
@@ -53,19 +54,19 @@ MyAsset::register($this);
                 'text'        => Yii::t('app', 'Tables'),
                 'subMenuData' => [
                     [
-                        'link' => '/index.php?r=teachers/index',
+                        'link' => Url::to(['teachers/index']),
                         'text' => Yii::t('app', 'Teachers'),
                     ],
                     [
-                        'link' => '/index.php?r=departments/index',
+                        'link' => Url::to(['departments/index']),
                         'text' => Yii::t('app','Departments'),
                     ],
                     [
-                        'link' => '/index.php?r=subjects/index',
+                        'link' => Url::to(['subjects/index']),
                         'text' => Yii::t('app','Subjects'),
                     ],
                     [
-                        'link' => '/index.php?r=teaching/index',
+                        'link' => Url::to(['teaching/index']),
                         'text' => Yii::t('app','Teaching'),
                     ]
                 ],

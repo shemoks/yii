@@ -1,9 +1,12 @@
+<?php
+use yii\helpers\Url;
+?>
 <div class="myIndex">
-    <h1>База данных "Колледж"</h1>
+    <h1><?= Yii::t('app','College') ?></h1>
 </div>
 <div class="buttons">
-    <a class="btn btn-lg btn-success" href="http://yii.loc/index.php?r=teachers/index"> "Преподаватели"</a>
-    <a class="btn btn-lg btn-success" href="http://yii.loc/index.php?r=departments/index">"Кафедры"</a>
-    <a class="btn btn-lg btn-success" href="http://yii.loc/index.php?r=subjects/index">"Предметы"</a>
-    <a class="btn btn-lg btn-success" href="http://yii.loc/index.php?r=teaching/index">"Нагрузка преподавателей"</a>
+    <a class="btn btn-lg btn-success" href="<?=Url::to(['teachers/index'])?>"><?= Yii::t('app','Teachers') ?></a>
+    <a class="btn btn-lg btn-success" href="<?=Url::to(['departments/index'])?>"><?= Yii::t('app','Departments') ?></a>
+    <a class="btn btn-lg btn-success" href="<?=Url::to(['subjects/index'])?>"><?= Yii::t('app','Subjects') ?></a>
+    <a class="btn btn-lg btn-success" href="<?=Url::to(['teaching/index'])?>"><?= Yii::t('app','Teaching') ?></a>
 </div>
