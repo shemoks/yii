@@ -226,4 +226,12 @@ class Teachers extends ActiveRecord
     {
         return $this->hasMany(Teaching::className(), ['id_teacher' => 'id']);
     }
+
+    /**
+     * @return array|\yii\db\ActiveRecord[]
+     */
+    public function getAllTeachers()
+    {
+        return $this->find()->asArray()->all();
+    }
 }

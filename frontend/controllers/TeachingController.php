@@ -3,6 +3,7 @@
 namespace frontend\controllers;
 
 use common\models\models\Subjects;
+use common\models\models\Teachers;
 use Yii;
 use common\models\models\Teaching;
 use common\models\search\ModelsTeaching;
@@ -77,10 +78,13 @@ class TeachingController extends Controller
         } else {
             $subjects = (new Subjects())->getAllSubjects();
             $subjects = ArrayHelper::map($subjects, 'id', 'title');
+            $teachers = (new Teachers())->getAllTeachers();
+            $teachers = ArrayHelper::map($teachers, 'id', 'userSurname','userName', 'nickName');
 
             return $this->render('create', [
                 'model'    => $model,
-                'subjects' => $subjects
+                'subjects' => $subjects,
+                'teachers' => $teachers,
             ]);
         }
     }
@@ -107,10 +111,13 @@ class TeachingController extends Controller
         } else {
             $subjects = (new Subjects())->getAllSubjects();
             $subjects = ArrayHelper::map($subjects, 'id', 'title');
+            $teachers = (new Teachers())->getAllTeachers();
+            $teachers = ArrayHelper::map($teachers, 'id', 'userSurname');
 
             return $this->render('update', [
                 'model'    => $model,
-                'subjects' => $subjects
+                'subjects' => $subjects,
+                'teachers' => $teachers
             ]);
         }
     }

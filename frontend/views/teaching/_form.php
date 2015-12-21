@@ -1,6 +1,7 @@
 <?php
 
 use common\models\models\Subjects;
+use common\models\models\Teachers;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use kartik\select2\Select2;
@@ -16,7 +17,7 @@ use kartik\select2\Select2;
     <?php $form = ActiveForm::begin(); ?>
 
 
-    <?= /** @var \frontend\models\Subjects $subjects */
+    <?= /** @var \common\models\models\Subjects $subjects */
     $form->field($model, 'id_subject')->widget(Select2::classname(), [
         'data'          => $subjects,
         'options'       => [
@@ -29,7 +30,22 @@ use kartik\select2\Select2;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'id_teacher')->textInput() ?>
+    <?=
+
+    /** @var \common\models\models\Teachers $teachers */
+    $form->field($model, 'id_teacher')->widget(Select2::classname(), [
+        'data'          => $teachers,
+        'options'       => [
+            'placeholder' => Yii::t('app', 'Select {userSurname}', [
+                'userSurname' => (new Teachers)->getAttributeLabel('userSurname'),
+                'usrName' => (new Teachers)->getAttributeLabel('userName'),
+
+            ])
+        ],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
 
     <?= $form->field($model, 'year')->textInput() ?>
 

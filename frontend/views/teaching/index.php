@@ -32,7 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     return $model->idSubject->title;
                 },
             ],
-            'id_teacher',
+            [
+                'attribute' => 'id_teacher',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    return $model->idTeacher->userSurname;
+                },
+            ],
             'year',
 
             ['class' => 'yii\grid\ActionColumn'],
