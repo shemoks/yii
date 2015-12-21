@@ -1,16 +1,15 @@
 <?php
 
-namespace frontend\models;
+namespace common\models\search;
 
+use common\models\models\Departments;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Teaching;
 
-/**
- * ModelsTeaching represents the model behind the search form about `frontend\models\Teaching`.
- */
-class ModelsTeaching extends Teaching
+
+
+class ModelsDepartments extends Departments
 {
     /**
      * @inheritdoc
@@ -18,7 +17,8 @@ class ModelsTeaching extends Teaching
     public function rules()
     {
         return [
-            [['id_subject', 'id_teacher', 'year'], 'integer'],
+            [['id'], 'integer'],
+            [['title'], 'safe'],
         ];
     }
 
@@ -40,7 +40,7 @@ class ModelsTeaching extends Teaching
      */
     public function search($params)
     {
-        $query = Teaching::find();
+        $query = Departments::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -48,17 +48,17 @@ class ModelsTeaching extends Teaching
 
         $this->load($params);
 
-        if (!$this->validate()) {
+       if (!$this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
 
         $query->andFilterWhere([
-            'id_subject' => $this->id_subject,
-            'id_teacher' => $this->id_teacher,
-            'year' => $this->year,
+            'id' => $this->id,
         ]);
+
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

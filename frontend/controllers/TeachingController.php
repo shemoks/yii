@@ -2,10 +2,10 @@
 
 namespace frontend\controllers;
 
-use frontend\models\Subjects;
+use common\models\models\Subjects;
 use Yii;
-use frontend\models\Teaching;
-use frontend\models\ModelsTeaching;
+use common\models\models\Teaching;
+use common\models\search\ModelsTeaching;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

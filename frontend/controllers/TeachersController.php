@@ -2,9 +2,9 @@
 
 namespace frontend\controllers;
 
-use frontend\models\ModelsTeachers;
+use common\models\search\ModelsTeachers;
 use Yii;
-use frontend\models\Teachers;
+use common\models\models\Teachers;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

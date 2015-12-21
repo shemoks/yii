@@ -3,8 +3,8 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\Languages;
-use frontend\models\LanguagesSeach;
+use common\models\Languages;
+use common\models\search\LanguagesSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;

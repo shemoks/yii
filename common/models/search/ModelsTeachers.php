@@ -1,15 +1,14 @@
 <?php
 
-namespace frontend\models;
+namespace common\models\search;
 
+use common\models\models\Teachers;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 
-/**
- * models represents the model behind the search form about `frontend\models\Departments`.
- */
+
 class ModelsTeachers extends Teachers
 {
     /**

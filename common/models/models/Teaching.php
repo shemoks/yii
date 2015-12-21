@@ -1,6 +1,7 @@
 <?php
 
-namespace frontend\models;
+namespace common\models\models;
+
 
 use Yii;
 use yii\db\ActiveRecord;
@@ -33,6 +34,7 @@ class Teaching extends ActiveRecord
         return [
             [['id_subject', 'id_teacher', 'year'], 'required'],
             [['id_subject', 'id_teacher', 'year'], 'integer'],
+            [['year'], 'in', 'range' => range(1999,2020)],
         ];
     }
 

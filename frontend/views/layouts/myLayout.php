@@ -24,8 +24,8 @@ MyAsset::register($this);
 <?php $this->beginBody() ?>
 
 <div id="wrapper">
-    <?= \frontend\widgets\lang\LangWidget::widget();?>
-    <?= \frontend\widgets\menu\MenuWidget::widget([
+    <?= \common\widgets\lang\LangWidget::widget();?>
+    <?= \common\widgets\menu\MenuWidget::widget([
         'siteName'     => Yii::t('app', 'College'),
         'topMenuItems' => [
             [

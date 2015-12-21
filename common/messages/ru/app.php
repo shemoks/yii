@@ -16,7 +16,13 @@ return [
     'Contact' => 'Контакты',
     'Please fill out the following fields to signup:' => 'Пожалуйста, заполните следующие поля, чтобы зарегистрироваться:',
     'Signup' => 'Регистрация',
-    'Login' => 'Авторизация'
+    'Login' => 'Авторизация',
+    'Create Teachers' => 'Добавить преподавателя',
+    'Create Teaching' => 'Добавить нагрузку',
+    'Teachings' => 'Нагрузка',
+    'Create' => 'Добавить',
+    'Create Departments' => 'Добавить кафедру',
+    'Select' => 'Выбрать'
 
 
 ];

@@ -1,16 +1,13 @@
 <?php
 
-namespace frontend\models;
+namespace common\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use frontend\models\Languages;
+use common\models\models\Subjects;
 
-/**
- * LanguagesSeach represents the model behind the search form about `frontend\models\Languages`.
- */
-class LanguagesSeach extends Languages
+class ModelsSubjects extends Subjects
 {
     /**
      * @inheritdoc
@@ -18,8 +15,8 @@ class LanguagesSeach extends Languages
     public function rules()
     {
         return [
-            [['id', 'default', 'date_update', 'date_create'], 'integer'],
-            [['url', 'local', 'name'], 'safe'],
+            [['id', 'count_hours'], 'integer'],
+            [['title', 'type_subject'], 'safe'],
         ];
     }
 
@@ -41,7 +38,7 @@ class LanguagesSeach extends Languages
      */
     public function search($params)
     {
-        $query = Languages::find();
+        $query = Subjects::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,14 +54,11 @@ class LanguagesSeach extends Languages
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'default' => $this->default,
-            'date_update' => $this->date_update,
-            'date_create' => $this->date_create,
+            'count_hours' => $this->count_hours,
         ]);
 
-        $query->andFilterWhere(['like', 'url', $this->url])
-            ->andFilterWhere(['like', 'local', $this->local])
-            ->andFilterWhere(['like', 'name', $this->name]);
+        $query->andFilterWhere(['like', 'title', $this->title])
+            ->andFilterWhere(['like', 'type_subject', $this->type_subject]);
 
         return $dataProvider;
     }

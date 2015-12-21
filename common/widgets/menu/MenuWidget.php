@@ -1,5 +1,5 @@
 <?php
-namespace frontend\widgets\menu;
+namespace common\widgets\menu;
 
 use yii\bootstrap\Widget;
 

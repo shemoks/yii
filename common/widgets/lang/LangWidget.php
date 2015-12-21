@@ -1,6 +1,6 @@
 <?php
-namespace frontend\widgets\lang;
-use frontend\models\Languages;
+namespace common\widgets\lang;
+use common\models\models\Languages;
 use yii\bootstrap\Widget;
 
 class LangWidget extends Widget
