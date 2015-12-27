@@ -11,9 +11,10 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    'language'=>'ru-RU',
-
     'components' => [
+        'request' => [
+            'class' => 'common\components\LangRequest'
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -27,17 +28,9 @@ return [
                 ],
             ],
         ],
-        'request' => [
-
-        ],
-
-
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
     ],
-    'params' => [
-        
-    ]
+    'params' => $params,
 ];

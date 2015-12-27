@@ -1,5 +1,7 @@
 <?php
 
+use common\models\models\Subjects;
+use common\models\models\Teachers;
 use yii\helpers\Html;
 
 
@@ -14,7 +16,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <?= $this->render('_form', [
+    <?= /** @var Subjects[] $subjects */
+    /** @var Teachers $teachers */
+    $this->render('_form', [
         'model' => $model,
         'subjects' =>$subjects,
         'teachers' => $teachers

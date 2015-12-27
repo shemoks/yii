@@ -10,11 +10,10 @@ namespace common\models\forms;
 
 use Yii;
 use yii\base\Model;
-use yii\web\UploadedFile;
-use common\models\models\Teachers;
 
 
-class LoginForm extends Model
+
+class LoginForms extends Model
 {
     const WEAK = 0;
     const STRONG = 1;

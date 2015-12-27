@@ -1,53 +1,34 @@
 <?php
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'language'   => 'ru-RU',
+    'language' => 'ru-RU',
     'components' => [
-        'cache'        => [
+        'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        'user'         => [
-            'identityClass'   => 'common\models\User',
-            'enableAutoLogin' => true,
-        ],
-        'log'          => [
-            'traceLevel' => YII_DEBUG ? 3 : 0,
-            'targets'    => [
-                [
-                    'class'  => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
-                ],
-            ],
-        ],
-        'request'      => [
-            'class' => 'common\components\LangRequest'
-        ],
-        'urlManager'   => [
+        'urlManager' => [
             'enablePrettyUrl' => true,
-            'showScriptName'  => false,
-            'class'           => 'common\components\LangUrlManager',
-            'rules'           => [
-                '<controller:\w+>/<action:\w+>'            => '<controller>/<action>',
+            'showScriptName' => false,
+            'class' => 'common\components\LangUrlManager',
+            'rules' => [
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
                 '<lang:\w+>/<controller:\w+>/<action:\w+>' => '<controller>/<action>',
             ]
         ],
-        'i18n'         => [
+        'i18n' => [
             'translations' => [
                 'app*' => [
-                    'class'    => 'yii\i18n\PhpMessageSource',
+                    'class' => 'yii\i18n\PhpMessageSource',
                     // 'forceTranslation' => true,
                     'basePath' => '@common/messages',
-                    'fileMap'  => [
+                    'fileMap' => [
                         'app' => 'app.php',
                     ],
                 ],
             ],
-        ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
+        ]
     ],
-    'params'     => [
+    'params' => [
         'languages' => [
             'ru' => 'Русский',
             'ua' => 'Українська',

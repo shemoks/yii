@@ -68,6 +68,11 @@ class TeachingController extends Controller
     public function actionCreate()
     {
         $model = new Teaching();
+        $subjects = (new Subjects())->getAllSubjects();
+        /** @var Subjects[] $subjects */
+        $subjects = ArrayHelper::map($subjects, 'id', 'title');
+        $teachers = (new Teachers())->getAllTeachers();
+        $teachers = ArrayHelper::map($teachers, 'id', 'userSurname','userName');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect([
                 'view',
@@ -76,11 +81,6 @@ class TeachingController extends Controller
                 'year'       => $model->year
             ]);
         } else {
-            $subjects = (new Subjects())->getAllSubjects();
-            $subjects = ArrayHelper::map($subjects, 'id', 'title');
-            $teachers = (new Teachers())->getAllTeachers();
-            $teachers = ArrayHelper::map($teachers, 'id', 'userSurname','userName', 'nickName');
-
             return $this->render('create', [
                 'model'    => $model,
                 'subjects' => $subjects,

@@ -58,6 +58,11 @@ class Subjects extends ActiveRecord
         return $this->hasMany(Teaching::className(), ['id_subject' => 'id']);
     }
 
+    /*public function getTeachers()
+    {
+        return $this->hasMany(Teachers::className(), ['id' => 'id_teacher'])->viaTable('teaching',
+            ['id_subject' => 'id']);
+    }*/
     /**
      * @return array|\yii\db\ActiveRecord[]
      */

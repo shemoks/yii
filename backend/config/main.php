@@ -13,6 +13,9 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+        'request' => [
+            'class' => 'common\components\LangRequest'
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

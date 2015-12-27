@@ -36,7 +36,6 @@ class Teachers extends ActiveRecord
     const max = 30;
     public $rememberMe;
     public $passwordRepeat;
-  //  public $image;
 
     /**
      * @inheritdoc
@@ -203,11 +202,11 @@ class Teachers extends ActiveRecord
             'email'          => \Yii::t('app', 'E-mail'),
             'phone'          => \Yii::t('app', 'Телефон'),
             'passwordRepeat' => \Yii::t('app', 'Повторите пароль'),
-            'imageFile'          => \Yii::t('app', 'Фото'),
+            'imageFile'      => \Yii::t('app', 'Фото'),
             'password'       => \Yii::t('app', 'Пароль'),
             'rememberMe'     => \Yii::t('app', 'Запомнить меня'),
-            'id'       => \Yii::t('app', 'Номер'),
-              'id_department'       => \Yii::t('app', 'Номер кафедры'),
+            'id'             => \Yii::t('app', 'Номер'),
+            'id_department'  => \Yii::t('app', 'Номер кафедры'),
         ];
     }
 
@@ -226,6 +225,12 @@ class Teachers extends ActiveRecord
     {
         return $this->hasMany(Teaching::className(), ['id_teacher' => 'id']);
     }
+
+   /* public function getSubjects()
+    {
+        return $this->hasMany(Subjects::className(), ['id' => 'id_subject'])->viaTable('teaching',
+            ['id_teacher' => 'id']);
+    }*/
 
     /**
      * @return array|\yii\db\ActiveRecord[]

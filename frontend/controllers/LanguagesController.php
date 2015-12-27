@@ -3,7 +3,7 @@
 namespace frontend\controllers;
 
 use Yii;
-use common\models\Languages;
+use common\models\models\Languages;
 use common\models\search\LanguagesSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

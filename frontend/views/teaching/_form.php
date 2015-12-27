@@ -16,20 +16,6 @@ use kartik\select2\Select2;
 
     <?php $form = ActiveForm::begin(); ?>
 
-
-    <?= /** @var \common\models\models\Subjects $subjects */
-    $form->field($model, 'id_subject')->widget(Select2::classname(), [
-        'data'          => $subjects,
-        'options'       => [
-            'placeholder' => Yii::t('app', 'Select {title}', [
-                'title' => (new Subjects)->getAttributeLabel('title')
-            ])
-        ],
-        'pluginOptions' => [
-            'allowClear' => true
-        ],
-    ]); ?>
-
     <?=
 
     /** @var \common\models\models\Teachers $teachers */
@@ -38,12 +24,26 @@ use kartik\select2\Select2;
         'options'       => [
             'placeholder' => Yii::t('app', 'Select {userSurname}', [
                 'userSurname' => (new Teachers)->getAttributeLabel('userSurname'),
-                'usrName' => (new Teachers)->getAttributeLabel('userName'),
-
-            ])
+                'userName' => (new Teachers)->getAttributeLabel('userName'),
+            ]),
         ],
         'pluginOptions' => [
             'allowClear' => true
+        ],
+    ]); ?>
+
+    <?= /** @var \common\models\models\Subjects[] $subjects */
+    $form->field($model, 'id_subject')->widget(Select2::classname(), [
+        'data'          => $subjects,
+        'options'       => [
+            'placeholder' => Yii::t('app', 'Select {title}', [
+                'title' => (new Subjects)->getAttributeLabel('title')
+            ]),
+
+        ],
+        'pluginOptions' => [
+            'allowClear' => true,
+          //  'multiple' =>true
         ],
     ]); ?>
 

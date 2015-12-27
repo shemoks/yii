@@ -8,19 +8,19 @@
 
 namespace frontend\controllers;
 
+use common\models\forms\LoginForms;
 use yii;
 use yii\web\Controller;
-use frontend\models\LoginForm;
 use yii\web\Response;
 use yii\web\UploadedFile;
 use yii\widgets\ActiveForm;
 
-class LoginFormController extends Controller
+class LoginFormsController extends Controller
 {
 
     public function actionIndex()
     {
-        $model = new LoginForm();
+        $model = new LoginForms();
 
         if (Yii::$app->request->isAjax && $model->load(Yii::$app->request->post())) {
             Yii::$app->response->format = Response::FORMAT_JSON;

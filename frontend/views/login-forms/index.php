@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
     <?php
 
     $form = ActiveForm::begin([
-        'id'                   => 'login-form',
+        'id'                   => 'login-forms',
 //        'enableClientValidation' => true,
         'enableAjaxValidation' => true,
         'options'              => ['class' => 'form-horizontal', 'enctype' => 'multipart/form-data'],
