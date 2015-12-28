@@ -25,6 +25,7 @@ use yii\db\ActiveRecord;
  *
  * @property Departments $idDepartment
  * @property Teaching[] $teachings
+ *  @property ArticleTeacher[] $articleTeachers
  *
  */
 class Teachers extends ActiveRecord
@@ -238,5 +239,14 @@ class Teachers extends ActiveRecord
     public function getAllTeachers()
     {
         return $this->find()->asArray()->all();
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArticles()
+    {
+        return $this->hasMany(Articles::className(), ['id' => 'id_article'])
+            -> viaTable('article_teacher',['id_teacher' => 'id']);
     }
 }

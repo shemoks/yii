@@ -68,7 +68,11 @@ MyAsset::register($this);
                     [
                         'link' => Url::to(['teaching/index']),
                         'text' => Yii::t('app','Teaching'),
-                    ]
+                    ],
+                    [
+                        'link' => Url::to(['articles/index']),
+                        'text' => Yii::t('app','Articles'),
+                    ],
                 ],
             ],
         ]

@@ -22,7 +22,9 @@ return [
     'Teachings' => 'Нагрузка',
     'Create' => 'Добавить',
     'Create Departments' => 'Добавить кафедру',
-    'Select' => 'Выбрать'
+    'Select' => 'Выбрать',
+    'Articles' => 'Статьи',
+    'Create Articles' => 'Добавить статью',
 
 
 ];

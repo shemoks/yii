@@ -12,9 +12,11 @@ use Yii;
  * @property string $topic
  *
  * @property ArticleTeacher[] $articleTeachers
+ * @property mixed teachers
  */
 class Articles extends \yii\db\ActiveRecord
 {
+    public $id_teacher;
     /**
      * @inheritdoc
      */
@@ -49,8 +51,9 @@ class Articles extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getArticleTeachers()
+    public function getTeachers()
     {
-        return $this->hasMany(ArticleTeacher::className(), ['id_article' => 'id']);
+        return $this->hasMany(Teachers::className(), ['id' => 'id_teacher'])
+            ->viaTable('article_teacher',['id_article' => 'id']);
     }
 }

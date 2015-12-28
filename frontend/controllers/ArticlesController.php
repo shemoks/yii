@@ -2,18 +2,22 @@
 
 namespace frontend\controllers;
 
+use common\models\models\Teachers;
 use Yii;
 use common\models\models\Articles;
 use common\models\search\Articles as ArticlesSearch;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use common\models\models\ArticleTeacher;
 
 /**
  * ArticlesController implements the CRUD actions for Articles model.
  */
 class ArticlesController extends Controller
 {
+    public $layout = "myLayout";
     public function behaviors()
     {
         return [
@@ -63,11 +67,17 @@ class ArticlesController extends Controller
         $model = new Articles();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            /** @var Teachers[] $teachers */
+            $teachers = Teachers::find()->where(['id'=>$model->id_teacher])->all();
+            foreach($teachers as $teacher){
+                $model->link('teachers', $teacher);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-            return $this->render('create', [
+            return $this->render('create', array(
                 'model' => $model,
-            ]);
+                'modelTeacher' => ArrayHelper::map(Teachers::find()->all(),'id','userSurname')
+            ));
         }
     }
 
@@ -81,11 +91,18 @@ class ArticlesController extends Controller
     {
         $model = $this->findModel($id);
 
+        $model->id_teacher = ArrayHelper::getColumn($model->teachers,'id');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->unlinkAll('teachers', true);
+            $teachers = Teachers::find()->where(['id'=>$model->id_teacher])->all();
+            foreach($teachers as $teacher){
+                $model->link('teachers', $teacher);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'modelTeacher' => ArrayHelper::map(Teachers::find()->all(),'id','userSurname')
             ]);
         }
     }
@@ -98,8 +115,10 @@ class ArticlesController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
 
+        $model = $this->findModel($id);
+        $model->unlinkAll('teachers', true);
+        $model->delete();
         return $this->redirect(['index']);
     }
 
