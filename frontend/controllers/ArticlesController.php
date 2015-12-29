@@ -6,6 +6,7 @@ use common\models\models\Teachers;
 use Yii;
 use common\models\models\Articles;
 use common\models\search\Articles as ArticlesSearch;
+use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -21,7 +22,18 @@ class ArticlesController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['create', 'update', 'delete'],
+                'rules' => [
+                    [
+                        'actions' => ['create','update', 'delete'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+          'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
@@ -65,7 +77,6 @@ class ArticlesController extends Controller
     public function actionCreate()
     {
         $model = new Articles();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             /** @var Teachers[] $teachers */
             $teachers = Teachers::find()->where(['id'=>$model->id_teacher])->all();
@@ -76,7 +87,7 @@ class ArticlesController extends Controller
         } else {
             return $this->render('create', array(
                 'model' => $model,
-                'modelTeacher' => ArrayHelper::map(Teachers::find()->all(),'id','userSurname')
+                'modelTeacher' => ArrayHelper::map(Teachers::find()->all(),'id','userSurname','userName')
             ));
         }
     }
@@ -102,7 +113,7 @@ class ArticlesController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
-                'modelTeacher' => ArrayHelper::map(Teachers::find()->all(),'id','userSurname')
+                'modelTeacher' => ArrayHelper::map(Teachers::find()->all(),'id','userSurname','userName')
             ]);
         }
     }

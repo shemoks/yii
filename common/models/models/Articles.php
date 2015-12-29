@@ -49,6 +49,7 @@ class Articles extends \yii\db\ActiveRecord
     }
 
     /**
+     *
      * @return \yii\db\ActiveQuery
      */
     public function getTeachers()
