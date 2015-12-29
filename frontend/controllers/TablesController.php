@@ -1,7 +1,7 @@
 <?php
 namespace frontend\controllers;
 
-use frontend\models\Tables;
+
 use yii\web\Controller;
 use yii;
 

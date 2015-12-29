@@ -4,7 +4,7 @@ use yii\helpers\Html;
 
 
 /* @var $this yii\web\View */
-/* @var $model frontend\models\Subjects */
+/* @var $model common\models\models\Subjects */
 
 $this->title = Yii::t('app', 'Create Subjects');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Subjects'), 'url' => ['index']];

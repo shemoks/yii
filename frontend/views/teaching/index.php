@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel frontend\models\ModelsTeaching */
+/* @var $searchModel common\models\search\ModelsTeaching */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('app', 'Teachings');
@@ -23,10 +23,22 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
-
-            'id_subject',
-            'id_teacher',
+            [
+                'class' => 'yii\grid\SerialColumn'
+            ], [
+                'attribute' => 'id_subject',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    return $model->idSubject->title;
+                },
+            ],
+            [
+                'attribute' => 'id_teacher',
+                'format'    => 'raw',
+                'value'     => function ($model) {
+                    return $model->idTeacher->userSurname;
+                },
+            ],
             'year',
 
             ['class' => 'yii\grid\ActionColumn'],

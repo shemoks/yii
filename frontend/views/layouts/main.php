@@ -61,7 +61,7 @@ AppAsset::register($this);
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>
         <?= Alert::widget() ?>
-        <?= \frontend\widgets\lang\LangWidget::widget();?>
+        <?= \common\widgets\lang\LangWidget::widget();?>
         <?= $content ?>
 
     </div>

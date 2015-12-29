@@ -11,12 +11,13 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
-    'language'=>'ru-RU',
-
     'components' => [
+        'request' => [
+            'class' => 'common\components\LangRequest'
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => true
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -27,41 +28,9 @@ return [
                 ],
             ],
         ],
-        'request' => [
-         'class' => 'frontend\components\LangRequest'
-        ],
-      'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'class'=>'frontend\components\LangUrlManager',
-            'rules'=>[
-                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-                '<lang:\w+>/<controller:\w+>/<action:\w+>' => '<controller>/<action>',
-            ]
-        ],
-
-        'i18n' => [
-            'translations' => [
-                'app*' => [
-                    'class' => 'yii\i18n\PhpMessageSource',
-                   // 'forceTranslation' => true,
-                    'basePath' => '@frontend/messages',
-                    'fileMap' => [
-                        'app' => 'app.php',
-                    ],
-                ],
-            ],
-        ],
-
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
     ],
-    'params' => [
-        'languages' => [
-            'ru'=>'Русский',
-            'ua'=>'Українська',
-            'en'=>'English']
-    ]
+    'params' => $params,
 ];

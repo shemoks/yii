@@ -2,9 +2,12 @@
 
 namespace frontend\controllers;
 
+use common\models\models\Subjects;
+use common\models\models\Teachers;
 use Yii;
-use frontend\models\Teaching;
-use frontend\models\ModelsTeaching;
+use common\models\models\Teaching;
+use common\models\search\ModelsTeaching;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -15,11 +18,12 @@ use yii\filters\VerbFilter;
 class TeachingController extends Controller
 {
     public $layout = "myLayout";
+
     public function behaviors()
     {
         return [
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class'   => VerbFilter::className(),
                 'actions' => [
                     'delete' => ['post'],
                 ],
@@ -37,7 +41,7 @@ class TeachingController extends Controller
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
+            'searchModel'  => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -64,12 +68,23 @@ class TeachingController extends Controller
     public function actionCreate()
     {
         $model = new Teaching();
-
+        $subjects = (new Subjects())->getAllSubjects();
+        /** @var Subjects[] $subjects */
+        $subjects = ArrayHelper::map($subjects, 'id', 'title');
+        $teachers = (new Teachers())->getAllTeachers();
+        $teachers = ArrayHelper::map($teachers, 'id', 'userSurname','userName');
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_subject' => $model->id_subject, 'id_teacher' => $model->id_teacher, 'year' => $model->year]);
+            return $this->redirect([
+                'view',
+                'id_subject' => $model->id_subject,
+                'id_teacher' => $model->id_teacher,
+                'year'       => $model->year
+            ]);
         } else {
             return $this->render('create', [
-                'model' => $model,
+                'model'    => $model,
+                'subjects' => $subjects,
+                'teachers' => $teachers,
             ]);
         }
     }
@@ -87,10 +102,22 @@ class TeachingController extends Controller
         $model = $this->findModel($id_subject, $id_teacher, $year);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id_subject' => $model->id_subject, 'id_teacher' => $model->id_teacher, 'year' => $model->year]);
+            return $this->redirect([
+                'view',
+                'id_subject' => $model->id_subject,
+                'id_teacher' => $model->id_teacher,
+                'year'       => $model->year
+            ]);
         } else {
+            $subjects = (new Subjects())->getAllSubjects();
+            $subjects = ArrayHelper::map($subjects, 'id', 'title');
+            $teachers = (new Teachers())->getAllTeachers();
+            $teachers = ArrayHelper::map($teachers, 'id', 'userSurname');
+
             return $this->render('update', [
-                'model' => $model,
+                'model'    => $model,
+                'subjects' => $subjects,
+                'teachers' => $teachers
             ]);
         }
     }
@@ -121,7 +148,12 @@ class TeachingController extends Controller
      */
     protected function findModel($id_subject, $id_teacher, $year)
     {
-        if (($model = Teaching::findOne(['id_subject' => $id_subject, 'id_teacher' => $id_teacher, 'year' => $year])) !== null) {
+        if (($model = Teaching::findOne([
+                'id_subject' => $id_subject,
+                'id_teacher' => $id_teacher,
+                'year'       => $year
+            ])) !== null
+        ) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

@@ -1,12 +1,17 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: oksana
+ * Date: 24.12.15
+ * Time: 2:54
+ */
+
 namespace common\models;
+
 
 use Yii;
 use yii\base\Model;
 
-/**
- * Login form
- */
 class LoginForm extends Model
 {
     public $username;
