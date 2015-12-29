@@ -32,7 +32,8 @@ class Articles extends \yii\db\ActiveRecord
     {
         return [
             [['title'], 'required'],
-            [['title', 'topic'], 'string', 'max' => 255]
+            [['title', 'topic'], 'string', 'max' => 255],
+            ['id_teacher','safe']
         ];
     }
 

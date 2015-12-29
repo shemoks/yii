@@ -24,7 +24,7 @@ use yii\widgets\ActiveForm;
             'allowClear' => true,
             'multiple' => true
         ],
-    ])->label('Teachers');
+    ])->label('teachers');
     ?>
 
     <div class="form-group">
